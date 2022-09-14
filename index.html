@@ -1,256 +1,871 @@
-﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<!--[if lt IE 8 ]><html class="no-js ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="no-js ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 8)|!(IE)]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Bowen Jing </title>
-    <style type="text/css">
-        * {
-            margin: 0;
-            padding: 0;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            -ms-box-sizing: border-box;
-            -o-box-sizing: border-box;
-            box-sizing: border-box;
-        }
-        
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-            color: #fefeff;
-            -webkit-font-smoothing: antialiased;
-            font-smoothing: antialiased;
-        }
-        
-        body {
-            font-family: "Microsoft YaHei";
-            background: rgb(8, 5, 16);
-            overflow: hidden;
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -khtml-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-        
-        h1 {
-            font: 2.75em;
-            font-weight: 400;
-            letter-spacing: 0.35em;
-            text-shadow: 0 0 25px rgba(254, 254, 255, 0.85);
-        }
-        
-        h2 {
-            font: 1.45em;
-            font-weight: 400;
-            letter-spacing: 0.05em;
-            text-shadow: 0 0 25px rgba(254, 254, 255, 0.85);
-            text-transform: lowercase;
-        }
-        
-        [class^="letter"] {
-            -webkit-transition: opacity 3s ease;
-            -moz-transition: opacity 3s ease;
-            transition: opacity 3s ease;
-        }
-        
-        .letter-0 {
-            transition-delay: 0.2s;
-        }
-        
-        .letter-1 {
-            transition-delay: 0.4s;
-        }
-        
-        .letter-2 {
-            transition-delay: 0.6s;
-        }
-        
-        .letter-3 {
-            transition-delay: 0.8s;
-        }
-        
-        .letter-4 {
-            transition-delay: 1.0s;
-        }
-        
-        .letter-5 {
-            transition-delay: 1.2s;
-        }
-        
-        .letter-6 {
-            transition-delay: 1.4s;
-        }
-        
-        .letter-7 {
-            transition-delay: 1.6s;
-        }
-        
-        .letter-8 {
-            transition-delay: 1.8s;
-        }
-        
-        .letter-9 {
-            transition-delay: 2.0s;
-        }
-        
-        .letter-10 {
-            transition-delay: 2.2s;
-        }
-        
-        .letter-11 {
-            transition-delay: 2.4s;
-        }
-        
-        .letter-12 {
-            transition-delay: 2.6s;
-        }
-        
-        .letter-13 {
-            transition-delay: 2.8s;
-        }
-        
-        .letter-14 {
-            transition-delay: 3.0s;
-        }
-        
-        h1,
-        h2 {
-            visibility: hidden;
-            -webkit-transform: translate3d(0, 0, 0);
-            -moz-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
-        }
-        
-        h1.transition-in,
-        h2.transition-in {
-            visibility: visible;
-        }
-        
-        h1 [class^="letter"],
-        h2 [class^="letter"] {
-            opacity: 0;
-        }
-        
-        h1.transition-in [class^="letter"],
-        h2.transition-in [class^="letter"] {
-            opacity: 1;
-        }
-        
-        #container {
-            display: table;
-            position: absolute;
-            z-index: 20;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            cursor: none;
-            left: 15px;
-        }
-        
-        #container>div {
-            display: table-cell;
-            vertical-align: middle;
-        }
-        
-        #container p {
-            position: absolute;
-            width: 100%;
-            left: 0;
-            bottom: 25px;
-            font-size: 0.8em;
-            letter-spacing: 0.1em;
-            font-weight: 300;
-            color: #76747a;
-            -webkit-font-smoothing: subpixel-antialiased;
-            font-smoothing: subpixel-antialiased;
-        }
-        
-        #container p strong {
-            color: #b3abc5;
-            font-size: 5em;
-        }
-        
-        #container p span {
-            font-size: 0.75em;
-            padding: 0 2px;
-        }
-        
-        #canvas {
-            position: absolute;
-            z-index: 10;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            cursor: none;
-        }
-        
-        #stats {
-            position: absolute;
-            z-index: 10;
-            left: 10px;
-            top: 10px;
-        }
-        
-        .dg.ac {
-            z-index: 100 !important;
-        }
-        
-        #container div p strong a {
-            color: #999;
-            font-size: 0.5em;
-        }
-        
-        body,
-        td,
-        th {}
-        
-        a:link {
-            text-decoration: none;
-        }
-        
-        a:visited {
-            text-decoration: none;
-        }
-        
-        a:hover {
-            text-decoration: none;
-        }
-        
-        a:active {
-            text-decoration: none;
-        }
-    </style>
+
+    <!--- Basic Page Needs
+   ================================================== -->
+    <meta charset="utf-8">
+    <title>Arthur</title>
+    <meta name="description" content="">
+    <meta name="author" content="Bowen Jing">
+
+    <!-- Mobile Specific Metas
+   ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/default.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/media-queries.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <!-- Script
+   ================================================== -->
+    <script src="js/modernizr.js"></script>
+
+    <!-- Favicons
+	================================================== -->
+    <link rel="shortcut icon" href="favicon.png">
+
 </head>
 
-<body ondragstart="window.event.returnValue=false" oncontextmenu="window.event.returnValue=false" onselectstart="event.returnValue=false">
+<body>
 
-    <div id="container">
+    <!-- Header
+   ================================================== -->
+    <header id="home">
 
-        <div>
-            <h1 id="h1">荆 博文</h1>
-            <h2 id="h2">Arthur Jing</h2>
-            <!--<h3 id="h2">Slide your mouse...</h3>-->
-            <p>&nbsp;</p>
+        <nav id="nav-wrap">
 
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
-            <p>&nbsp;</p>
+            <a class="mobile-btn" href="#nav-wrap" title="Show navigation">Show navigation</a>
+            <a class="mobile-btn" href="#" title="Hide navigation">Hide navigation</a>
+
+            <ul id="nav" class="nav">
+                <li class="current"><a class="smoothscroll" href="#home">Home</a></li>
+                <li><a class="smoothscroll" href="#about">About</a></li>
+                <li><a class="smoothscroll" href="#resume">Resume</a></li>
+                <li><a class="smoothscroll" href="#portfolio">Works</a></li>
+                <li><a class="smoothscroll" href="#testimonials">Motto</a></li>
+                <li><a class="smoothscroll" href="#contact">Contact</a></li>
+            </ul>
+            <!-- end #nav -->
+
+        </nav>
+        <!-- end #nav-wrap -->
+
+        <div class="row banner">
+            <div class="banner-text">
+                <h1 class="responsive-headline">I'm Bowen Jing.</h1>
+                <h3>I'm a student study at the <a href='https://www.manchester.ac.uk/'>University of Manchester</a> This website is built to introduce myself(skill&project) Let's <a class="smoothscroll" href="#about">start scrolling</a> and learn more
+                    <a class="smoothscroll" href="#about">about me</a>.</h3>
+                <hr />
+                <ul class="social">
+                    <li><a href="https://www.linkedin.com/in/bowen-jing-412350212/"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="https://github.com/Arthur12137"><i class="fa fa-github"></i></a></li>
+
+                </ul>
+            </div>
         </div>
 
-    </div>
+        <p class="scrolldown">
+            <a class="smoothscroll" href="#about"><i class="icon-down-circle"></i></a>
+        </p>
 
-    <canvas id="canvas"></canvas>
+    </header>
+    <!-- Header End -->
+
+
+    <!-- About Section
+   ================================================== -->
+    <section id="about">
+
+        <div class="row">
+
+            <div class="three columns">
+
+                <img class="profile-pic" src="images/profilepic.jpg" alt="" />
+
+            </div>
+
+            <div class="nine columns main-col">
+
+                <h2>About Me</h2>
+
+                <p>
+                    Hi! I am a second-year student at the University of Manchester. Although I have one year of programming experience, I have already finished lots of projects. During the development process, I accumulate tons of useful experience and keep enriching it. Of course, I am a totally Game player! I am not only a game lover but also a fascination with the ninth art. The reason why my major is computer science is that I will be engaged in game development in the future. More importantly, I am not only enriching my skills (java, C++, unity, etc), I will also engage in some game research in my spare time: for example the differences between Japanese video games and European and American games, game design ideas, The principle of game development. I can not only judge the quality of a game from the perspective of a gamer for many years but also continuously improve the game mechanics and game content from the perspective of a developer.
+
+
+                </p>
+
+                <div class="row">
+
+                    <div class="columns contact-details">
+
+                        <h2>Contact Details</h2>
+                        <p class="address">
+                            <span>Bowen Jing</span><br>
+                            <span>
+						         Chepstow street, GM, M1 5JF, Unite Kingdom
+                     </span><br>
+                            <span>(+44)7306235084</span><br>
+                            <span>Arthur12137@Gmail.com</span>
+                        </p>
+
+                    </div>
+
+                    <div class="columns download">
+                        <p>
+                            <a href="Jing_CV.pdf" class="button" download="Jing_CV.pdf"><i class="fa fa-download"></i>Download CV</a>
+                        </p>
+                    </div>
+
+                </div>
+                <!-- end row -->
+
+            </div>
+            <!-- end .main-col -->
+
+        </div>
+
+    </section>
+    <!-- About Section End-->
+
+
+    <!-- Resume Section
+   ================================================== -->
+    <section id="resume">
+
+        <!-- Education
+      ----------------------------------------------- -->
+        <div class="row education">
+
+            <div class="three columns header-col">
+                <h1><span>Education</span></h1>
+            </div>
+
+            <div class="nine columns main-col">
+
+                <div class="row item">
+
+                    <div class="twelve columns">
+
+                        <h3>University of Life</h3>
+                        <p class="info">pursuing bachelor in the University of Manchester <span>&bull;</span> <em class="date">June 2020 to present</em></p>
+
+                         <p>
+                            <!-- COMP10120 First Year Team Project<br> COMP12111 Fundamentals of Computer Engineering<br> COMP13121 Data Science <br> COMP15212 Operating Systems<br> COMP16321
+                            Introduction to Programming(Python)  <br> COMP16412 Introduction to Programming(Java) <br> -->
+                            There is a timeline about my <a href = "timeline.html">University Project</a>
+
+                        </p> 
+
+                    </div>
+
+                </div>
+                <!-- item end -->
+
+                <div class="row item">
+                    <!-- 
+               <div class="twelve columns">
+
+                  <h3>School of Cool Designers</h3>
+                  <p class="info">B.A. Degree in Graphic Design <span>&bull;</span> <em class="date">March 2003</em></p>
+
+                  <p>
+                  This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
+                  Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem
+                  nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan
+                  ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat
+                  </p>
+
+               </div> -->
+
+                </div>
+                <!-- item end -->
+
+            </div>
+            <!-- main-col end -->
+
+        </div>
+        <!-- End Education -->
+
+
+        <!-- Work
+      ----------------------------------------------- -->
+        <div class="row work">
+
+            <div class="three columns header-col">
+                <h1><span>personal projects</span></h1>
+            </div>
+
+            <div class="nine columns main-col">
+
+                <div class="row item">
+
+                    <div class="twelve columns">
+
+                        <h3>Self-spellcheck-system</h3>
+                        <p class="info">developer <span>&bull;</span> <em class="date">October 2020</em></p>
+
+                        <p>
+                            This is a console based system developed by Python. In this system, you can enter a sentence or a file to find the wrong spell words. Besides, you also can get the suggested words which might be the right spelling. I also add the English dictionary database,
+                            in case users have some words which they don't know.
+                        </p>
+
+                    </div>
+
+                </div>
+                <!-- item end -->
+
+                <div class="row item">
+
+                    <div class="twelve columns">
+
+                        <h3>movie-recommandation-webapp</h3>
+                        <p class="info">front-end developer <span>&bull;</span> <em class="date">March 2021</em></p>
+
+                        <p>
+                            This is a team project. FilmFlick is an app which will suggest a completely random movie to you with one click or you may set some filters to refine the results to your tastes. There is a complete user system which allows you to write reviews as well
+                            as add movies to your own Liked or Disliked list.
+                        </p>
+
+                    </div>
+
+                </div>
+                <!-- item end -->
+
+            </div>
+            <!-- main-col end -->
+
+        </div>
+        <!-- End Work -->
+
+
+        <!-- Skills
+      ----------------------------------------------- -->
+        <div class="row skill">
+
+            <div class="three columns header-col">
+                <h1><span>Skills</span></h1>
+            </div>
+
+            <div class="nine columns main-col">
+
+                <p>
+                    <b style='color:#270819'>Python</b>: have a solid grasp of <b>NumPy,Pandas,SciPy,Matplotlib</b>. Master <b>Object-Oriented Programming</b><br>
+                    <b style='color:#270819'>Java</b>: Familiar with basic knowledge of <b>Java</b>, understand <b>JVM</b> memory model, use <b>Spring</b> framework, master basic knowledge of <b>MySQL</b>, understand <b>TCP/IP protocol</b>, <b>HTTP protocol</b>,
+                    understand basic knowledge of operating system, master threads and processes<br>
+                    <b style='color:#270819'>C/C++</b>: Familiar with basic knowledge of <b>C</b>, Master commonly used algorithms and data structures (linked lists, queues, stacks, binary trees, etc.), and have good coding habits. Familiar with embedded Linux (Ubuntu) environment, understand Makefile writing, and complete automatic project compilation. Familiar with I/O operation under Linux, multi-process, multi-thread, signal, lock and socket network programming mechanism.
+                </p>
+
+                <div class="bars">
+
+                    <ul class="skills">
+                        <li><span class="bar-expand python"></span><em>Python</em></li>
+                        <li><span class="bar-expand java"></span><em>Java</em></li>
+                        <li><span class="bar-expand c"></span><em>C/C++</em></li>
+                        <li><span class="bar-expand html"></span><em>HTML5</em></li>
+                        <li><span class="bar-expand css"></span><em>CSS</em></li>
+                        <li><span class="bar-expand jquery"></span><em>jQuery</em></li>
+                        <li><span class="bar-expand mysql"></span><em>MYSQL</em></li>
+                    </ul>
+
+                </div>
+                <!-- end skill-bars -->
+
+            </div>
+            <!-- main-col end -->
+
+        </div>
+        <!-- End skills -->
+
+    </section>
+    <!-- Resume Section End-->
+
+
+    <!-- Portfolio Section
+   ================================================== -->
+    <section id="portfolio">
+
+        <div class="row">
+
+            <div class="twelve columns collapsed">
+
+                <h1>Check Out Some of My Works.</h1>
+
+                <!-- portfolio-wrapper -->
+                <div id="portfolio-wrapper" class="bgrid-quarters s-bgrid-thirds cf">
+
+                    <div class="columns portfolio-item">
+                        <div class="item-wrap">
+
+                            <a href="#modal-01" title="">
+                                <img alt="" src="images/portfolio/self.jpg">
+                                <div class="overlay">
+                                    <div class="portfolio-item-meta">
+                                        <h5>Self_SpellCheck_System</h5>
+                                        <p>Python</p>
+                                    </div>
+                                </div>
+                                <div class="link-icon"><i class="icon-plus"></i></div>
+                            </a>
+
+                        </div>
+                    </div>
+                    <!-- item end -->
+
+                    <div class="columns portfolio-item">
+                        <div class="item-wrap">
+
+                            <a href="#modal-02" title="">
+                                <img alt="" src="images/portfolio/plane.jpg">
+                                <div class="overlay">
+                                    <div class="portfolio-item-meta">
+                                        <h5>Plane_Game</h5>
+                                        <p>Python</p>
+                                    </div>
+                                </div>
+                                <div class="link-icon"><i class="icon-plus"></i></div>
+                            </a>
+
+                        </div>
+                    </div>
+                    <!-- item end -->
+
+                    <div class="columns portfolio-item">
+                        <div class="item-wrap">
+
+                            <a href="#modal-03" title="">
+                                <img alt="" src="images/portfolio/fi.jpg">
+                                <div class="overlay">
+                                    <div class="portfolio-item-meta">
+                                        <h5>Financial Calculator</h5>
+                                        <p>Python(Tkinter)</p>
+                                    </div>
+                                </div>
+                                <div class="link-icon"><i class="icon-plus"></i></div>
+                            </a>
+
+                        </div>
+                    </div>
+                    <!-- item end -->
+
+                    <div class="columns portfolio-item">
+                        <div class="item-wrap">
+
+                            <a href="#modal-04" title="">
+                                <img alt="" src="images/portfolio/photo.jpg">
+                                <div class="overlay">
+                                    <div class="portfolio-item-meta">
+                                        <h5>Photo transfer to symbol</h5>
+                                        <p>Python</p>
+                                    </div>
+                                </div>
+                                <div class="link-icon"><i class="icon-plus"></i></div>
+                            </a>
+
+                        </div>
+                    </div>
+                    <!-- item end -->
+
+                    <div class="columns portfolio-item">
+                        <div class="item-wrap">
+
+                            <a href="#modal-05" title="">
+                                <img alt="" src="images/portfolio/chess.jpg">
+                                <div class="overlay">
+                                    <div class="portfolio-item-meta">
+                                        <h5>console_based chess game</h5>
+                                        <p>Java</p>
+                                    </div>
+                                </div>
+                                <div class="link-icon"><i class="icon-plus"></i></div>
+                            </a>
+
+                        </div>
+                    </div>
+                    <!-- item end -->
+
+                    <div class="columns portfolio-item">
+                        <div class="item-wrap">
+
+                            <a href="#modal-06" title="">
+                                <img alt="" src="images/portfolio/Maze.jpg">
+                                <div class="overlay">
+                                    <div class="portfolio-item-meta">
+                                        <h5>auto Maze solver</h5>
+                                        <p>Java</p>
+                                    </div>
+                                </div>
+                                <div class="link-icon"><i class="icon-plus"></i></div>
+                            </a>
+
+                        </div>
+                    </div>
+                    <!-- item end -->
+
+                    <div class="columns portfolio-item">
+                        <div class="item-wrap">
+
+                            <a href="#modal-07" title="">
+                                <img alt="" src="images/portfolio/rec.jpg">
+                                <div class="overlay">
+                                    <div class="portfolio-item-meta">
+                                        <h5>Java Recommendation System</h5>
+                                        <p>Web App</p>
+                                    </div>
+                                </div>
+                                <div class="link-icon"><i class="icon-plus"></i></div>
+                            </a>
+
+                        </div>
+                    </div>
+                    <!-- item end -->
+
+                    <div class="columns portfolio-item">
+                        <div class="item-wrap">
+
+                            <a href="#modal-08" title="">
+                                <img alt="" src="images/portfolio/team1.jpg">
+                                <div class="overlay">
+                                    <div class="portfolio-item-meta">
+                                        <h5>Team_project</h5>
+                                        <p>Flask</p>
+                                    </div>
+                                </div>
+                                <div class="link-icon"><i class="icon-plus"></i></div>
+                            </a>
+
+                        </div>
+                    </div>
+                    <!-- item end -->
+
+                </div>
+                <!-- portfolio-wrapper end -->
+
+            </div>
+            <!-- twelve columns end -->
+
+
+            <!-- Modal Popup
+	      --------------------------------------------------------------- -->
+
+            <div id="modal-01" class="popup-modal mfp-hide">
+
+                <img class="scale-with-grid" src="images/portfolio/modals/self.jpg" alt="" />
+
+                <div class="description-box">
+                    <h4>Self_SpellCheck_System</h4>
+                    <p>self spellcheck system base on console developed by python.</p>
+                    <span class="categories"><i class="fa fa-tag"></i>Python</span>
+                </div>
+
+                <div class="link-box">
+                    <!-- <a href="main.html" target="_blank">Details</a> -->
+                    <a class="popup-modal-dismiss">Close</a>
+                </div>
+
+            </div>
+            <!-- modal-01 End -->
+
+            <div id="modal-02" class="popup-modal mfp-hide">
+
+                <img class="scale-with-grid" src="images/portfolio/modals/plane.jpg" alt="" />
+
+                <div class="description-box">
+                    <h4>plane game</h4>
+                    <p> a classical plane game developed by python as my second school coursework. In this game you can choose different difficulty. If you want to some crazy thing, there are some available cheat code you can choose</p>
+                    <span class="categories"><i class="fa fa-tag"></i>python game based on Tkinter</span>
+                </div>
+
+                <div class="link-box">
+                    <!-- <a href="timeline.html" target="_blank">Details</a> -->
+                    <a class="popup-modal-dismiss">Close</a>
+                </div>
+
+            </div>
+            <!-- modal-02 End -->
+
+            <div id="modal-03" class="popup-modal mfp-hide">
+
+                <img class="scale-with-grid" src="images/portfolio/modals/fi.jpg" alt="" />
+
+                <div class="description-box">
+                    <h4>Financial Calculator</h4>
+                    <p> A financial calculator developed by Tkinter</p>
+                    <span class="categories"><i class="fa fa-tag"></i>Python</span>
+                </div>
+
+                <div class="link-box">
+                    <!-- <a href="main.html" target="_blank">Details</a> -->
+                    <a class="popup-modal-dismiss">Close</a>
+                </div>
+
+            </div>
+            <!-- modal-03 End -->
+
+            <div id="modal-04" class="popup-modal mfp-hide">
+
+                <img class="scale-with-grid" src="images/portfolio/modals/photo.jpg" alt="" />
+
+                <div class="description-box">
+                    <h4>photo transfer</h4>
+                    <p>Use PIL library to convert pictures to character paintings</p>
+                    <span class="categories"><i class="fa fa-tag"></i>python</span>
+                </div>
+
+                <div class="link-box">
+                    <!-- <a href="#" target="_blank">Details</a> -->
+                    <a class="popup-modal-dismiss">Close</a>
+                </div>
+
+            </div>
+            <!-- modal-04 End -->
+
+            <div id="modal-05" class="popup-modal mfp-hide">
+
+                <img class="scale-with-grid" src="images/portfolio/modals/chess.jpg" alt="" />
+
+                <div class="description-box">
+                    <h4>Chess</h4>
+                    <p>A console based Java Chess game, which use the base of the OOP</p>
+                    <span class="categories"><i class="fa fa-tag"></i>Java</span>
+                </div>
+
+                <div class="link-box">
+                    <!-- <a href="http://www.behance.net" target="_blank">Details</a> -->
+                    <a class="popup-modal-dismiss">Close</a>
+                </div>
+
+            </div>
+            <!-- modal-05 End -->
+
+            <div id="modal-06" class="popup-modal mfp-hide">
+
+                <img class="scale-with-grid" src="images/portfolio/modals/maze.jpg" alt="" />
+
+                <div class="description-box">
+                    <h4>Maze</h4>
+                    <p>a simple Maze solver</p>
+                    <span class="categories"><i class="fa fa-tag"></i>Java</span>
+                </div>
+
+                <div class="link-box">
+                    <!-- <a href="http://www.behance.net" target="_blank">Details</a> -->
+                    <a class="popup-modal-dismiss">Close</a>
+                </div>
+
+            </div>
+            <!-- modal-06 End -->
+
+            <div id="modal-07" class="popup-modal mfp-hide">
+
+                <img class="scale-with-grid" src="images/portfolio/modals/re.jpg" alt="" />
+
+                <div class="description-box">
+                    <h4></h4>
+                    <p></p>
+                    <span class="categories"><i class="fa fa-tag"></i>Java</span>
+                </div>
+
+                <div class="link-box">
+                    <!-- <a href="http://www.behance.net" target="_blank">Details</a> -->
+                    <a class="popup-modal-dismiss">Close</a>
+                </div>
+
+            </div>
+            <!-- modal-07 End -->
+
+            <div id="modal-08" class="popup-modal mfp-hide">
+
+                <img class="scale-with-grid" src="images/portfolio/modals/team1.jpg" alt="" />
+
+                <div class="description-box">
+                    <h4>team project</h4>
+                    <p>This is a team project. FilmFlick is an app which will suggest a completely random movie to you with one click or you may set some filters to refine the results to your tastes. There is a complete user system which allows you to write reviews as well as add movies to your own Liked or Disliked list.</p>
+                    <span class="categories"><i class="fa fa-tag"></i>HTML,CSS,JAVASCRIPT,FLASK</span>
+                </div>
+
+                <div class="link-box">
+                    <!-- <a href="http://www.behance.net" target="_blank">Details</a> -->
+                    <a class="popup-modal-dismiss">Close</a>
+                </div>
+
+            </div>
+            <!-- modal-01 End -->
+
+
+        </div>
+        <!-- row End -->
+
+    </section>
+    <!-- Portfolio Section End-->
+
+
+    <!-- Call-To-Action Section
+   ================================================== -->
+    <!-- <section id="call-to-action">
+
+        <div class="row">
+
+            <div class="two columns header-col">
+
+                <h1><span>Get Hosting.</span></h1>
+
+            </div>
+
+            <div class="seven columns">
+
+                <h2><span class="lead">Unde Omnis Iste</span></h2>
+                <p><span class="lead">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
+            eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae. </span></p>
+
+            </div>
+
+            <div class="three columns action">
 
 
 
-    <script src="js/bootstrapmb.com.js"></script>
+            </div>
+
+        </div>
+
+    </section> -->
+    <!-- Call-To-Action Section End-->
+
+
+    <!-- Testimonials Section
+   ================================================== -->
+    <section id="testimonials">
+
+        <div class="text-container">
+
+            <div class="row">
+
+                <div class="two columns header-col">
+
+                    <h1><span>motto</span></h1>
+
+                </div>
+
+                <div class="ten columns flex-container">
+
+                    <div class="flexslider">
+
+                        <ul class="slides">
+
+                            <li>
+                                <blockquote>
+                                    <p>
+                                       Success depends on how people deal with failure
+                                    </p>
+                                    <cite>Bowen Jing</cite>
+                                </blockquote>
+                            </li>
+                            <!-- slide ends -->
+
+                            <li>
+                                <blockquote>
+                                    <p>外国人能搞，我们中国人就不能搞？
+                                    </p>
+                                    <cite>钱学森</cite>
+                                </blockquote>
+                            </li>
+                            <!-- slide ends -->
+
+                            <li>
+                              <blockquote>
+                                  <p>No one can beat the man with the iron will!
+                                  </p>
+                                  <cite>Bowen Jing</cite>
+                              </blockquote>
+                          </li>
+                          <!-- slide ends -->
+
+                        </ul>
+
+                    </div>
+                    <!-- div.flexslider ends -->
+
+                </div>
+                <!-- div.flex-container ends -->
+
+            </div>
+            <!-- row ends -->
+
+        </div>
+        <!-- text-container ends -->
+
+    </section>
+    <!-- Testimonials Section End-->
+
+
+    <!-- Contact Section
+   ================================================== -->
+    <section id="contact">
+
+        <div class="row section-head">
+
+            <div class="two columns header-col">
+
+                <h1><span>Get In Touch.</span></h1>
+
+            </div>
+
+            <div class="ten columns">
+
+                <p class="lead">If you have any questions about me or my project. Feel free to contact me!
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="eight columns">
+
+                <!-- form -->
+                <form action="" method="post" id="contactForm" name="contactForm">
+                    <fieldset>
+
+                        <div>
+                            <label for="contactName">Name <span class="required">*</span></label>
+                            <input type="text" value="" size="35" id="contactName" name="contactName">
+                        </div>
+
+                        <div>
+                            <label for="contactEmail">Email <span class="required">*</span></label>
+                            <input type="text" value="" size="35" id="contactEmail" name="contactEmail">
+                        </div>
+
+                        <div>
+                            <label for="contactSubject">Subject</label>
+                            <input type="text" value="" size="35" id="contactSubject" name="contactSubject">
+                        </div>
+
+                        <div>
+                            <label for="contactMessage">Message <span class="required">*</span></label>
+                            <textarea cols="50" rows="15" id="contactMessage" name="contactMessage"></textarea>
+                        </div>
+
+                        <div>
+                            <a href="mailto:Arthur12137"><button class="submit">Submit</button></a>
+                            <span id="image-loader">
+                        <img alt="" src="images/loader.gif">
+                     </span>
+                        </div>
+
+                    </fieldset>
+                </form>
+                <!-- Form End -->
+
+                <!-- contact-warning -->
+                <div id="message-warning"> Error boy</div>
+                <!-- contact-success -->
+                <div id="message-success">
+                    <i class="fa fa-check"></i>Your message was sent, thank you!<br>
+                </div>
+
+            </div>
+
+
+            <aside class="four columns footer-widgets">
+
+                <div class="widget widget_contact">
+
+                    <h4>Address and Phone</h4>
+                    <p class="address">
+                        <span>Bowen Jing</span><br>
+                        <span>Chepstow House<br>
+                    Chepstow street, GM, M1 5JF, United Kingdom
+              </span><br>
+                        <span>(+44)7306235084</span><br>
+                        <span>Arthur12137@Gmail.com</span>
+                    </p>
+
+                </div>
+
+                <!-- <div class="widget widget_tweets">
+
+                    <h4 class="widget-title">Latest Tweets</h4>
+
+                    <ul id="twitter">
+                        <li>
+                            <span>
+                        This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
+                        Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum
+                        <a href="#">http://t.co/CGIrdxIlI3</a>
+                        </span>
+                            <b><a href="#">2 Days Ago</a></b>
+                        </li>
+                        <li>
+                            <span>
+                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
+                        eaque ipsa quae ab illo inventore veritatis et quasi
+                        <a href="#">http://t.co/CGIrdxIlI3</a>
+                        </span>
+                            <b><a href="#">3 Days Ago</a></b>
+                        </li>
+                    </ul>
+
+                </div> -->
+
+            </aside>
+
+        </div>
+
+    </section>
+    <!-- Contact Section End-->
+
+
+    <!-- footer
+   ================================================== -->
+    <footer>
+
+        <div class="row">
+
+            <div class="twelve columns">
+
+                <!-- <ul class="social-links">
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                </ul> -->
+
+                <ul class="copyright">
+                    <li>&copy; Copyright 2021 Bowen Jing</li>
+                </ul>
+
+            </div>
+
+            <div id="go-top"><a class="smoothscroll" title="Back to Top" href="#home"><i class="icon-up-open"></i></a></div>
+
+        </div>
+
+    </footer>
+    <!-- Footer End-->
+
+    <!-- Java Script
+   ================================================== -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')
+    </script>
+    <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+
+    <script src="js/jquery.flexslider.js"></script>
+    <script src="js/waypoints.js"></script>
+    <script src="js/jquery.fittext.js"></script>
+    <script src="js/magnific-popup.js"></script>
+    <script src="js/init.js"></script>
 
 </body>
 
