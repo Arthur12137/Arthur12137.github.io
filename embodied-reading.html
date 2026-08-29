@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>具身智能入门阅读路径</title>
+<meta name="description" content="面向有科研基础、初入具身智能方向的研究者的入门阅读路径">
+<style>
+:root{
+  --bg:#fbfbfa; --panel:#fff; --ink:#1a1a1a; --ink-2:#4a4a4a; --ink-3:#787876;
+  --line:#e4e2dd; --line-2:#efedea;
+  --accent:#8a3324; --accent-soft:#f6eeec;
+  --tag-must:#8a3324; --tag-must-bg:#f6eeec;
+  --tag-opt:#5a6b58; --tag-opt-bg:#eef1ed;
+  --tag-core:#2f4858; --tag-core-bg:#eaf0f3;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#16161a; --panel:#1d1d22; --ink:#eceae6; --ink-2:#b8b5ae; --ink-3:#87847d;
+    --line:#2e2e35; --line-2:#26262c;
+    --accent:#d98b74; --accent-soft:#2a1f1c;
+    --tag-must:#d98b74; --tag-must-bg:#2a1f1c;
+    --tag-opt:#9fb59b; --tag-opt-bg:#20261f;
+    --tag-core:#8fb2c4; --tag-core-bg:#1b242a;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#16161a; --panel:#1d1d22; --ink:#eceae6; --ink-2:#b8b5ae; --ink-3:#87847d;
+  --line:#2e2e35; --line-2:#26262c;
+  --accent:#d98b74; --accent-soft:#2a1f1c;
+  --tag-must:#d98b74; --tag-must-bg:#2a1f1c;
+  --tag-opt:#9fb59b; --tag-opt-bg:#20261f;
+  --tag-core:#8fb2c4; --tag-core-bg:#1b242a;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:var(--sans); font-size:16px; line-height:1.75;
+  letter-spacing:.01em;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* ---------- header ---------- */
+header{border-bottom:1px solid var(--line);padding:64px 0 40px;margin-bottom:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0 0 14px}
+h1{font-size:clamp(30px,4.4vw,46px);line-height:1.2;margin:0 0 18px;font-weight:650;letter-spacing:-.01em}
+.sub{font-size:17px;color:var(--ink-2);max-width:62ch;margin:0}
+.meta{margin-top:24px;font-family:var(--mono);font-size:12.5px;color:var(--ink-3)}
+
+/* ---------- layout ---------- */
+.layout{display:grid;grid-template-columns:220px 1fr;gap:56px;padding:44px 0 96px;align-items:start}
+@media(max-width:900px){.layout{grid-template-columns:1fr;gap:0;padding-top:28px}}
+
+nav.toc{position:sticky;top:28px}
+@media(max-width:900px){
+  nav.toc{position:static;margin-bottom:36px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+}
+nav.toc .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:14px}
+nav.toc a{display:block;padding:6px 0 6px 12px;border-left:2px solid var(--line);color:var(--ink-2);text-decoration:none;font-size:14px;transition:.15s}
+nav.toc a:hover{color:var(--accent);border-left-color:var(--accent)}
+nav.toc a .n{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);margin-right:7px}
+
+/* ---------- gradient boxes ---------- */
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 52px}
+@media(max-width:780px){.tiers{grid-template-columns:1fr}}
+.tier{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:18px 18px 16px}
+.tier .t-n{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--accent);margin-bottom:8px}
+.tier h4{margin:0 0 7px;font-size:15px;font-weight:620}
+.tier p{margin:0;font-size:13.5px;color:var(--ink-2);line-height:1.65}
+
+/* ---------- chapters ---------- */
+section.ch{margin-bottom:64px;scroll-margin-top:24px}
+.ch-head{display:flex;align-items:baseline;gap:14px;padding-bottom:12px;border-bottom:1px solid var(--ink);margin-bottom:8px}
+.ch-num{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.08em;white-space:nowrap}
+.ch-head h2{margin:0;font-size:23px;font-weight:640;letter-spacing:-.005em}
+.ch-note{font-size:14.5px;color:var(--ink-2);margin:14px 0 26px;max-width:70ch}
+.ch-note strong{color:var(--ink);font-weight:600}
+
+/* ---------- paper card ---------- */
+.p{border-bottom:1px solid var(--line-2);padding:20px 0}
+.p:last-child{border-bottom:none}
+.p-top{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
+.p-idx{font-family:var(--mono);font-size:12px;color:var(--ink-3);min-width:22px}
+.p-title{font-size:16.5px;font-weight:600;margin:0;flex:1;min-width:240px;line-height:1.45}
+.p-title a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);transition:.15s}
+.p-title a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.p-body{margin-left:36px}
+@media(max-width:640px){.p-body{margin-left:0}}
+.p-src{font-family:var(--mono);font-size:12px;color:var(--ink-3);margin:5px 0 10px}
+.p-what,.p-why{font-size:14.5px;line-height:1.7;margin:0 0 7px;color:var(--ink-2)}
+.p-why{color:var(--ink)}
+.p-why b{color:var(--accent);font-weight:600;font-size:12px;font-family:var(--mono);letter-spacing:.06em;margin-right:6px}
+.p-what b{color:var(--ink-3);font-weight:600;font-size:12px;font-family:var(--mono);letter-spacing:.06em;margin-right:6px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:2px}
+.tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;padding:3px 8px;border-radius:2px;white-space:nowrap}
+.t-must{color:var(--tag-must);background:var(--tag-must-bg)}
+.t-opt{color:var(--tag-opt);background:var(--tag-opt-bg)}
+.t-core{color:var(--tag-core);background:var(--tag-core-bg)}
+
+/* ---------- callouts ---------- */
+.call{background:var(--accent-soft);border-left:3px solid var(--accent);padding:16px 18px;margin:24px 0;border-radius:0 3px 3px 0}
+.call .ttl{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.call p{margin:0;font-size:14.5px;line-height:1.7;color:var(--ink)}
+.call p+p{margin-top:9px}
+
+/* ---------- thread ---------- */
+.thread{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:20px 22px;margin:24px 0}
+.thread .ttl{font-size:14px;font-weight:640;margin-bottom:14px}
+.thread ol{margin:0;padding-left:0;list-style:none;counter-reset:s}
+.thread li{counter-increment:s;position:relative;padding-left:34px;margin-bottom:11px;font-size:14.5px;color:var(--ink-2);line-height:1.65}
+.thread li:last-child{margin-bottom:0}
+.thread li::before{content:counter(s);position:absolute;left:0;top:1px;font-family:var(--mono);font-size:11px;color:var(--accent);border:1px solid var(--line);width:20px;height:20px;display:grid;place-items:center;border-radius:50%}
+.thread li b{color:var(--ink);font-weight:600}
+
+/* ---------- table ---------- */
+.tw{overflow-x:auto;margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:460px}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line-2)}
+th{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--ink-3);text-transform:uppercase;border-bottom:1px solid var(--line);font-weight:500}
+td{color:var(--ink-2)}
+td:first-child{color:var(--ink);font-weight:560}
+
+/* ---------- cut list ---------- */
+.cut li{font-size:14.5px;color:var(--ink-2);margin-bottom:9px;line-height:1.7}
+.cut li b{color:var(--ink)}
+
+footer{border-top:1px solid var(--line);padding:30px 0 60px;font-family:var(--mono);font-size:12px;color:var(--ink-3)}
+footer a{color:var(--ink-3)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="eyebrow">Embodied AI · Reading Path</p>
+    <h1>具身智能入门阅读路径</h1>
+    <p class="sub">面向有科研基础、但初次进入具身智能方向的研究者。20 篇材料,按 7 章排列。每一篇都标注了它在路径中的位置,而不只是它是什么。</p>
+    <p class="meta">2026-08 · 共 20 篇 · 核心必读 11 篇</p>
+  </div>
+</header>
+
+<div class="wrap">
+<div class="layout">
+
+<nav class="toc">
+  <div class="lbl">目录</div>
+  <a href="#tiers"><span class="n">—</span>三级梯度</a>
+  <a href="#ch0"><span class="n">0</span>地基</a>
+  <a href="#ch1"><span class="n">1</span>数据</a>
+  <a href="#ch2"><span class="n">2</span>评测</a>
+  <a href="#ch3"><span class="n">3</span>桥</a>
+  <a href="#ch4"><span class="n">4</span>世界-动作模型</a>
+  <a href="#ch5"><span class="n">5</span>造世界</a>
+  <a href="#ch6"><span class="n">6</span>灵巧手</a>
+  <a href="#spine"><span class="n">*</span>贯穿案例</a>
+  <a href="#cut"><span class="n">—</span>删减建议</a>
+</nav>
+
+<main>
+
+<section id="tiers">
+<div class="tiers">
+  <div class="tier">
+    <div class="t-n">梯度 一</div>
+    <h4>看懂别人在说什么</h4>
+    <p>第 0–1 章。读完能听懂组会上的 VLA、co-training、data recipe 在指什么,知道数据从哪来。</p>
+  </div>
+  <div class="tier">
+    <div class="t-n">梯度 二</div>
+    <h4>判断一个结果值不值钱</h4>
+    <p>第 2–3 章。读完知道 benchmark 分数意味着什么、不意味着什么,能对着一张表提出问题。</p>
+  </div>
+  <div class="tier">
+    <div class="t-n">梯度 三</div>
+    <h4>看清正在争论的前沿</h4>
+    <p>第 4–6 章。读完知道领域内部还没定下来的是哪几件事,以及自己可能从哪里切入。</p>
+  </div>
+</div>
+</section>
+
+<!-- ============ CH 0 ============ -->
+<section class="ch" id="ch0">
+  <div class="ch-head"><span class="ch-num">CH 0</span><h2>地基</h2></div>
+  <p class="ch-note">这两篇不读,后面所有论文的动作头都看不懂。<strong>不要跳过。</strong></p>
+
+  <div class="p">
+    <div class="p-top"><span class="p-idx">01</span>
+      <p class="p-title"><a href="https://arxiv.org/abs/2303.04137" target="_blank" rel="noopener">Diffusion Policy: Visuomotor Policy Learning via Action Diffusion</a></p></div>
+    <div class="p-body">
+      <div class="p-src">arXiv 2303.04137 · RSS 2023</div>
+      <p class="p-what"><b>解决什么</b>把动作生成建模成条件去噪过程,处理多模态动作分布。</p>
+      <p class="p-why"><b>为何在此</b>整份列表最底下那块砖。不懂它就读不懂 π0.5 的 flow matching 动作专家,也读不懂 LingBot-VA 的自回归扩散。</p>
+      <div class="tags"><span class="tag t-must">必读</span><span class="tag t-core">前置</span></div>
+    </div>
+  </div>
+
+  <div class="p">
+    <div class="p-top"><span class="p-idx">02</span>
+      <p class="p-title"><a href="https://arxiv.org/abs/2504.16054" target="_blank" rel="noopener">π0.5: a VLA with Open-World Generalization</a></p></div>
+    <div class="p-body">
+      <div class="p-src">arXiv 2504.16054 · Physical Intelligence · 2025</div>
+      <p class="p-what"><b>解决什么</b>在异构数据上共训的视觉-语言-动作模型,高层子任务 + 低层动作两段结构。</p>
+      <p class="p-why"><b>为何在此</b>用一篇代替 RT-2 / OpenVLA。它本身就带着数据配方的叙事,和后面的数据章、Qwen 报告是同一条线;RT-2 会把读者拽回 2023 的架构史。代价:它不讲动作 token 化的机制细节,那部分用一页图补。</p>
+      <div class="tags"><span class="tag t-must">必读</span><span class="tag t-core">基准锚点</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CH 1 ============ -->
+<section class="ch" id="ch1">
+  <div class="ch-head"><span class="ch-num">CH 1</span><h2>数据:从哪来,各扮演什么角色</h2></div>
+  <p class="ch-note">全份路径的主线章。这一章有两组「分类学 + 受控实验」的配对,<strong>配对讲比单篇讲强得多</strong>。</p>
+
+  <div class="p">
+    <div class="p-top"><span class="p-idx">03</span>
+      <p class="p-title"><a href="https://arxiv.org/abs/2607.24744" target="_blank" rel="noopener">Data Pyramid for Embodied Manipulation: A Survey</a></p></div>
+    <div class="p-body">
+      <div class="p-src">arXiv 2607.24744 · 2026-07</div>
+      <p class="p-what"><b>解决什么</b>把具身数据生态组织成五层金字塔:真机数据 / UMI 类 / ego 与 exo 视频 / 仿真 / 通用视觉-语言。组织轴是<em>可扩展性 ↔ 机器人对齐度</em>的张力,每层再按质量、多样性、复用性、物理保真度刻画。</p>
+      <p class="p-why"><b>为何在此</b><b></b>主线教材,整份路径的骨架。后面每一篇都能在这张金字塔上找到位置。六个开放挑战那一节可以直接当选题清单读。</p>
+      <div class="tags"><span class="tag t-must">必读</span><span class="tag t-core">章节教材</span></div>
+    </div>
+  </div>
+
+  <div class="p">
+    <div class="p-top"><span class="p-idx">04</span>
+      <p class="p-title"><a href="https://arxiv.org/abs/2402.10329" target="_blank" rel="noopener">UMI: Universal Manipulation Interface</a></p></div>
+    <div class="p-body">
+      <div class="p-src">arXiv 2402.10329 · RSS 2024</div>
+      <p class="p-what"><b>解决什么</b>手持式夹爪采集设备,让人不用机器人就能采到可直接训练的演示数据。</p>
+      <p class="p-why"><b>为何在此</b>金字塔第二层字面就叫「UMI-style data」。不讲 UMI,那一层就只是个名词。而且这是全份材料里<em>唯一</em>讲「采集硬件怎么设计」的入口。</p>
+      <div class="tags"><span class="tag t-must">必读</span><span class="tag t-core">前置</span></div>
+    </div>
+  </div>
+
+  <div class="p">
+    <div class="p-top"><span class="p-idx">05</span>
+      <p class="p-title"><a href="https://arxiv.org/abs/2506.13536" target="_blank" rel="noopener">What Matters in Learning from Large-Scale Datasets for Robot Manipulation</a></p></div>
+    <div class="p-body">
+      <div class="p-src">arXiv 2506.13536 · MimicLabs · Georgia Tech + NVIDIA · 2025-06</div>
+      <p class="p-what"><b>解决什么</b>用程序化生成的受控数据集(BDDL + MimicGen,500 条人类演示 → 100 万条),回答两个实践问题:采集时该在哪个维度上做多样性、从已有数据集里该按哪个维度检索。结论:相机位姿和空间布置是主导维度,物体纹理几乎无关;按相机外参检索 DROID,比用全量 DROID 训练高最多 70%。</p>
+      <p class="p-why"><b>为何在此</b>它和 Data Pyramid 构成「分类学 + 受控实验」的配对:Pyramid 说有哪几类数据源,这篇说<em>单一来源内部</em>什么维度才真的重要。同时它是 1 → 2 章的桥:先讲清哪些维度主导泛化,再讲「所以扰动这些维度策略就崩」,评测章立刻有了因果。</p>
+      <div class="tags"><span class="tag t-must">必读</span><span class="tag t-core">体裁范本</span></div>
+    </div>
+  </div>
+
+  <div class="p">
+    <div class="p-top"><span class="p-idx">06</span>
+      <p class="p-title"><a href="https://arxiv.org/abs/2603.22264" target="_blank" rel="noopener">UniDex: A Robot Foundation Suite for Universal Dexterous Hand Control from Egocentric Human Videos</a></p></div>
+    <div class="p-body">
+      <div class="p-src">arXiv 2603.22264 · CVPR 2026 · 2026-03</div>
+      <p class="p-what"><b>解决什么</b>从 ego 人类视频构建 50K 轨迹、覆盖 8 种手(6–24 DoF);human-in-the-loop 重定向对齐指尖轨迹并保持合理手-物接触;提出 FAAS 统一动作空间把功能相似的执行器映到共享坐标。</p>
+      <p class="p-why"><b>为何在此</b>一箭双雕:它既是 ego 视频这条线的落点,也是第 6 章灵巧手的伏笔。ego 视频最难的地方——没有动作标签——在灵巧手上被放大到极致,重定向是唯一出路。</p>
+      <div class="tags"><span class="tag t-must">必读</span><span class="tag t-core">双章枢纽</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CH 2 ============ -->
+<section class="ch" id="ch2">
+  <div class="ch-head"><span class="ch-num">CH 2</span><h2>评测:怎么测,以及为什么现在的测法不够</h2></div>
+  <p class="ch-note">这四个 benchmark <strong>不要当四个并列的东西讲</strong>。它们在两条不同的轴上,而且这一章的落点不该是「有哪些 benchmark」,而是「<strong>为什么 LIBERO 刷到饱和不说明问题</strong>」。</p>
+
+  <div class="tw">
+  <table>
+    <thead><tr><th>Benchmark</th><th>轴</th><th>在测什么</th></tr></thead>
+    <tbody>
+      <tr><td>LIBERO</td><td>基线</td><td>终身学习 / 多任务的标准套件</td></tr>
+      <tr><td>LIBERO-Plus</td><td>鲁棒性</td><td>同一批任务加扰动,测 OOD,不是新能力</td></tr>
+      <tr><td>RoboCasa</td><td>广度</td><td>场景与任务规模 + 生成式资产</td></tr>
+      <tr><td>RoboTwin</td><td>协同</td><td>双臂 + 数字孪生生成的可控变化</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="p">
+    <div class="p-top"><span class="p-idx">07</span>
+      <p class="p-title"><a href="https://arxiv.org/abs/2306.03310" target="_blank" rel="noopener">LIBERO</a></p></div>
+    <div class="p-body"><div class="p-src">arXiv 2306.03310 · NeurIPS 2023</div>
+    <p class="p-why"><b>为何在此</b>后面所有 benchmark 的参照系,也是 MimicLabs 用来写任务规格的 BDDL 框架来源。</p>
+    <div class="tags"><span class="tag t-must">必读</span></div></div>
+  </div>
+
+  <div class="p">
+    <div class="p-top"><span class="p-idx">08</span>
+      <p class="p-title">LIBERO-Plus</p></div>
+    <div class="p-body"><div class="p-src">LIBERO 的扰动扩展版</div>
+    <p class="p-why"><b>为何在此</b>把第 1 章的结论兑现:MimicLabs 说相机位姿主导泛化,LIBERO-Plus 的扰动里正好有相机视角。两篇并排,机制就闭合了。</p>
+    <div class="tags"><span class="tag t-must">必读</span></div></div>
+  </div>
+
+  <div class="p">
+    <div class="p-top"><span class="p-idx">09</span>
+      <p class="p-title"><a href="https://arxiv.org/abs/2406.02523" target="_blank" rel="noopener">RoboCasa</a></p></div>
+    <div class="p-body"><div class="p-src">arXiv 2406.02523 · RSS 2024</div>
+    <p class="p-why"><b>为何在此</b>规模轴的代表。生成式资产与场景是后面第 5 章的先声。</p>
+    <div class="tags"><span class="tag t-opt">略读</span></div></div>
+  </div>
+
+  <div class="p">
+    <div class="p-top"><span class="p-idx">10</span>
+      <p class="p-title"><a href="https://arxiv.org/abs/2504.13059" target="_blank" rel="noopener">RoboTwin</a></p></div>
+    <div class="p-body"><div class="p-src">arXiv 2504.13059 · CVPR 2025</div>
+    <p class="p-why"><b>为何在此</b>双臂 + 数字孪生。Fast-WAM 在它上面验,后面能对上。</p>
+    <div class="tags"><span class="tag t-opt">略读</span></div></div>
+  </div>
+
+  <div class="call">
+    <div class="ttl">这一章要埋的线</div>
+    <p>上面四个 benchmark <strong>全是夹爪</strong>。这本身就是领域的一个缺口 —— 第 2 章埋下,第 6 章兑现。这样灵巧手不是「另外还有」,而是这个问题的答案。</p>
+  </div>
+</section>
+
+<!-- ============ CH 3 ============ -->
+<section class="ch" id="ch3">
+  <div class="ch-head"><span class="ch-num">CH 3</span><h2>桥:从 VLA 走向世界模型</h2></div>
+  <p class="ch-note">只有一篇,但位置是结构性的。<strong>单独当方法论文讲,它就只是一个 trick;放在这个位置,它是一课。</strong></p>
+
+  <div class="p">
+    <div class="p-top"><span class="p-idx">11</span>
+      <p class="p-title"><a href="https://arxiv.org/abs/2503.22020" target="_blank" rel="noopener">CoT-VLA: Visual Chain-of-Thought Reasoning for Vision-Language-Action Models</a></p></div>
+    <div class="p-body">
+      <div class="p-src">arXiv 2503.22020 · NVIDIA · CVPR 2025</div>
+      <p class="p-what"><b>解决什么</b>先预测子目标图像,再据此生成动作,把「视觉 chain-of-thought」塞进 VLA。</p>
+      <p class="p-why"><b>为何在此</b>它是 VLA → 世界模型之间的中间形态。读完这篇,第 4 章的「为什么要预测未来」就不需要另外解释了。</p>
+      <div class="tags"><span class="tag t-must">必读</span><span class="tag t-core">过渡</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CH 4 ============ -->
+<section class="ch" id="ch4">
+  <div class="ch-head"><span class="ch-num">CH 4</span><h2>世界-动作模型(WAM)</h2></div>
+  <p class="ch-note">整份路径最有分量的一章。三篇连起来不是三个模型,而是<strong>一个论断被提出、被削、再被放大的完整过程</strong>。顺序不能换。</p>
+
+  <div class="thread">
+    <div class="ttl">这一章的叙事线</div>
+    <ol>
+      <li><b>LingBot-VA</b> 立论:视频世界建模是与视觉-语言预训练<em>并列的、独立的</em>机器人学习基础。</li>
+      <li><b>Fast-WAM</b> 祛魅:把「训练时的视频建模」和「推理时的显式想象」拆开验,发现后者可以砍掉。</li>
+      <li><b>Dyna-2</b> 放大:那就把训练侧的视频推到 100 万小时,并给出 scaling law。</li>
+    </ol>
+  </div>
+
+  <div class="p">
+    <div class="p-top"><span class="p-idx">12</span>
+      <p class="p-title"><a href="https://arxiv.org/abs/2601.21998" target="_blank" rel="noopener">LingBot-VA: Causal World Modeling for Robot Control</a></p></div>
+    <div class="p-body">
+      <div class="p-src">arXiv 2601.21998 · Robbyant · 2026-01 · 开源</div>
+      <p class="p-what"><b>解决什么</b>自回归扩散框架,同时学帧预测和策略执行。三个设计:MoT 共享视觉-动作 latent、闭环 rollout 拿真实观测反馈、异步推理让动作预测与电机执行并行。</p>
+      <p class="p-why"><b>为何在此</b>建立「想象未来」的直觉。必须放在 Fast-WAM 之前,否则包袱先抖了。</p>
+      <div class="tags"><span class="tag t-must">必读</span><span class="tag t-core">立论</span></div>
+    </div>
+  </div>
+
+  <div class="p">
+    <div class="p-top"><span class="p-idx">13</span>
+      <p class="p-title"><a href="https://arxiv.org/abs/2603.16666" target="_blank" rel="noopener">Fast-WAM: Do World Action Models Need Test-time Future Imagination?</a></p></div>
+    <div class="p-body">
+      <div class="p-src">arXiv 2603.16666 · 清华 · 2026-03</div>
+      <p class="p-what"><b>解决什么</b>受控消融:保留视频 co-training、测试时不做未来预测,性能持平;反过来去掉视频 co-training,掉得多得多。190ms 延迟,比 imagine-then-execute 快 4 倍以上。在 LIBERO 和 RoboTwin 上验。</p>
+      <p class="p-why"><b>为何在此</b>教学价值最高的一篇。对有科研底子的读者,一个受控消融把上一篇的论断切开、指出哪一半是真的,比任何单篇 SOTA 都有用。<em>顺带</em>它还把「WAM(策略侧)vs Cosmos(基础设施侧)」的区分讲透了。</p>
+      <div class="tags"><span class="tag t-must">必读</span><span class="tag t-core">祛魅</span></div>
+    </div>
+  </div>
+
+  <div class="p">
+    <div class="p-top"><span class="p-idx">14</span>
+      <p class="p-title"><a href="https://www.dyna.co/dyna-2" target="_blank" rel="noopener">Dyna-2: A 1-Million-Hour Scaling Law for World-Action Models</a></p></div>
+    <div class="p-body">
+      <div class="p-src">dyna.co · Dyna Robotics · 2026-08 · 公司研究博客,非同行评审</div>
+      <p class="p-what"><b>解决什么</b>在 100 万+ 小时人类视频上预训练的 WAM。人类数据上的 scaling law 成立(R² 0.87–0.92);首次给出人类→机器人的迁移 scaling law(预训练里完全没有机器人数据,零样本机器人动作 MSE 仍随人类数据量单调下降);§4.1 有 WAM vs VLA 的同条件对比。结论句:<em>Video is the new scaling axis</em>。</p>
+      <p class="p-why"><b>为何在此</b>WAM 章的收尾,同时闭合 ego 视频那条线。<strong>必须提醒读者:这是公司博客,没有外部审稿,benchmark 是他们自己的。</strong>对这个读者群反而是好教材——顺手教一次怎么读一个没有同行评审的强 claim:看 scaling 拟合区间、看零样本那组的对照设置、看 WAM vs VLA 两边参数量与数据是否真的对齐。</p>
+      <div class="tags"><span class="tag t-must">必读</span><span class="tag t-core">放大</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CH 5 ============ -->
+<section class="ch" id="ch5">
+  <div class="ch-head"><span class="ch-num">CH 5</span><h2>造世界:两条路线</h2></div>
+  <p class="ch-note">这两篇<strong>互为对照,合起来讲比单讲任何一个都清楚</strong>。新人最需要的是下面这张表。</p>
+
+  <div class="tw">
+  <table>
+    <thead><tr><th></th><th>Cosmos 3</th><th>Genie Sim 3.0</th></tr></thead>
+    <tbody>
+      <tr><td>造世界的方式</td><td>生成式视频世界模型</td><td>显式物理仿真</td></tr>
+      <tr><td>产出</td><td>预测 / 想象</td><td>可执行场景 + 数据 + 评测</td></tr>
+      <tr><td>规模对照</td><td colspan="2">Qwen 38,100 小时(开源数据 + 人类视频) vs Genie Sim 10,000+ 小时(纯合成)</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="p">
+    <div class="p-top"><span class="p-idx">15</span>
+      <p class="p-title"><a href="https://arxiv.org/abs/2606.02800" target="_blank" rel="noopener">Cosmos 3: Omnimodal World Models for Physical AI</a></p></div>
+    <div class="p-body">
+      <div class="p-src">arXiv 2606.02800 · NVIDIA · 2026-06</div>
+      <p class="p-why"><b>为何在此</b>「世界模型」这个词在整份路径里指了两个不同的东西:第 4 章的 WAM 是<em>策略侧</em>(预测未来来出动作),Cosmos 是<em>基础设施侧</em>(数据引擎)。不澄清这一点,这一章白讲。</p>
+      <div class="tags"><span class="tag t-must">必读</span></div>
+    </div>
+  </div>
+
+  <div class="p">
+    <div class="p-top"><span class="p-idx">16</span>
+      <p class="p-title"><a href="https://arxiv.org/abs/2601.02078" target="_blank" rel="noopener">Genie Sim 3.0: A High-Fidelity Comprehensive Simulation Platform for Humanoid Robot</a></p></div>
+    <div class="p-body">
+      <div class="p-src">arXiv 2601.02078 · 智元 AgiBot · 2026-01 · 开源</div>
+      <p class="p-what"><b>解决什么</b>LLM 从自然语言指令生成高保真场景;首个用 LLM 批量生成评测场景 + VLM 自动判分的 benchmark;开源 10,000+ 小时合成数据、200+ 任务。</p>
+      <p class="p-why"><b>为何在此</b>展示一个全栈资产长什么样:生成器 → 数据 → benchmark → 自动评测,四层在一个地方。</p>
+      <div class="tags"><span class="tag t-must">必读</span></div>
+    </div>
+  </div>
+
+  <div class="call">
+    <div class="ttl">两个必须原样传达的点</div>
+    <p><strong>一、</strong>原文说的是合成数据可以在<em>受控条件下</em>替代真机数据。这个限定词不能丢,丢了就变成「合成数据可以替代真机」。</p>
+    <p><strong>二、</strong>VLM 自动判分本身是个<em>开放问题</em>,不是已解决的工程细节。判分器与被判对象同源、VLM 的判分偏差,这篇都没有解决。把它和 Qwen 那句「标准 benchmark 测不出预训练质量」并排放,就是整份报告最好的收尾:<strong>领域连「怎么判分」都还没定下来。</strong></p>
+  </div>
+</section>
+
+<!-- ============ CH 6 ============ -->
+<section class="ch" id="ch6">
+  <div class="ch-head"><span class="ch-num">CH 6</span><h2>灵巧手:下一个台阶</h2></div>
+  <p class="ch-note">前面五章是<strong>夹爪 + 位姿动作</strong>的世界。灵巧手同时改变三件事:动作维度爆炸(6–24 DoF)、<strong>接触从副作用变成主要信息通道</strong>、遥操作数据基本无法规模化。下面每一篇都对着其中一条。</p>
+
+  <div class="p">
+    <div class="p-top"><span class="p-idx">17</span>
+      <p class="p-title"><a href="https://arxiv.org/abs/2605.13925" target="_blank" rel="noopener">Towards Robotic Dexterous Hand Intelligence: A Survey</a></p></div>
+    <div class="p-body">
+      <div class="p-src">arXiv 2605.13925 · 2026-05</div>
+      <p class="p-what"><b>解决什么</b>四个面:硬件(驱动/传动/感知/代表性手型)、控制与学习、仿真、数据生成。</p>
+      <p class="p-why"><b>为何在此</b>纯算法背景的人最大的盲区是<em>硬件 trade-off</em>——力、顺应性、带宽、集成度怎么互相换。读十篇方法论文补不上这一课,这篇有。</p>
+      <div class="tags"><span class="tag t-must">必读</span><span class="tag t-core">章节教材</span></div>
+    </div>
+  </div>
+
+  <div class="p">
+    <div class="p-top"><span class="p-idx">18</span>
+      <p class="p-title"><a href="https://openreview.net/forum?id=jf7C7EGw21" target="_blank" rel="noopener">VTDexManip: A Dataset and Benchmark for Visual-tactile Pretraining and Dexterous Manipulation with RL</a></p></div>
+    <div class="p-body">
+      <div class="p-src">ICLR 2025 · OpenReview(arXiv 上没有)</div>
+      <p class="p-why"><b>为何在此</b>让读者看到:<strong>触觉不是「再加一个 sensor」,而是改变了表征学习的对象</strong>(视触觉预训练 → RL)。少数把 dataset 和 benchmark 一起做了的工作。</p>
+      <div class="tags"><span class="tag t-must">必读</span></div>
+    </div>
+  </div>
+
+  <div class="p">
+    <div class="p-top"><span class="p-idx">19</span>
+      <p class="p-title"><a href="https://arxiv.org/abs/2603.04531" target="_blank" rel="noopener">PTLD: Sim-to-real Privileged Tactile Latent Distillation for Dexterous Manipulation</a></p></div>
+    <div class="p-body">
+      <div class="p-src">arXiv 2603.04531 · 2026-03</div>
+      <p class="p-why"><b>为何在此</b>教的是一个<em>跨整个具身领域通用的套路</em>:仿真里有特权信息、真机没有,所以蒸馏。灵巧手只是这个 pattern 最典型的舞台。</p>
+      <div class="tags"><span class="tag t-opt">选读</span></div>
+    </div>
+  </div>
+
+  <div class="p">
+    <div class="p-top"><span class="p-idx">20</span>
+      <p class="p-title"><a href="https://arxiv.org/abs/2605.24339" target="_blank" rel="noopener">IsaacIPC: Coupling High-Fidelity Simulation and Realistic Rendering for Contact-Rich Robotic Systems</a></p></div>
+    <div class="p-body">
+      <div class="p-src">arXiv 2605.24339 · 2026-05</div>
+      <p class="p-what"><b>解决什么</b>把 GPU 加速的 IPC 接进 IsaacSim/Lab,提出 GMCP 解接触压力分布,demo 含四足、灵巧手、UMI 夹爪。</p>
+      <p class="p-why"><b>为何在此</b>接触保真度是灵巧手的仿真瓶颈。与 Taccel(arXiv 2504.12908)二选一即可 —— 选 IsaacIPC 是因为它落在读者真会去装去跑的栈上。</p>
+      <div class="tags"><span class="tag t-opt">选读</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SPINE ============ -->
+<section class="ch" id="spine">
+  <div class="ch-head"><span class="ch-num">*</span><h2>贯穿案例</h2></div>
+
+  <div class="p">
+    <div class="p-top"><span class="p-idx">21</span>
+      <p class="p-title"><a href="https://arxiv.org/abs/2606.17846" target="_blank" rel="noopener">Qwen-RobotManip Technical Report: Alignment Unlocks Scale for Robotic Manipulation Foundation Models</a></p></div>
+    <div class="p-body">
+      <div class="p-src">arXiv 2606.17846 · Qwen 团队 · 2026-06 · 44 页</div>
+      <p class="p-what"><b>解决什么</b>纯用开源数据 + 人类视频,凑出 ~38,100 小时预训练语料;human-to-robot 合成管线把 ego 手部演示转成 15 个平台的机器人轨迹;在表示、运动、行为三个维度做统一对齐。在 RoboCasa365 / LIBERO-Plus / RoboTwin 三个 OOD 变体上超过 π0.5,RoboChallenge 第一。</p>
+      <p class="p-why"><b>为何在此</b><strong>不要线性讲这 44 页。</strong>它的章节几乎正好覆盖上面每一章:数据来源与筛选 → 三维度对齐 → 为什么标准 benchmark 失效 → 真机验证。用法是<em>拆开</em>——每讲一个主题,回到它取对应那一节当实例。</p>
+      <div class="tags"><span class="tag t-must">贯穿全程</span><span class="tag t-core">落地实例</span></div>
+    </div>
+  </div>
+
+  <div class="call">
+    <div class="ttl">它贡献的一句核心台词</div>
+    <p>「standard benchmarks fail to capture pretraining quality」—— 这句话是第 2 章的转折点,也是第 5 章那个开放收尾的前半句。</p>
+  </div>
+</section>
+
+<!-- ============ CUT ============ -->
+<section class="ch" id="cut">
+  <div class="ch-head"><span class="ch-num">—</span><h2>删减建议</h2></div>
+  <p class="ch-note">入门报告最大的坑是塞太多。如果只讲一场,按下面砍。</p>
+
+  <ul class="cut">
+    <li><b>整格可删:</b>第 6 章的 PTLD 与 IsaacIPC(19、20)。灵巧手章保留 3 篇必读即可,主线完整性不受影响。</li>
+    <li><b>可压成一页:</b>RoboCasa 与 RoboTwin(09、10)。它们的作用是撑起那张「四个 benchmark 在测什么」的表,不需要逐篇细讲。</li>
+    <li><b>不可删:</b>Diffusion Policy 与 UMI(01、04)。看上去是旧论文,但它们是后面一切的前置,删掉会在报告中间留一个断层。</li>
+    <li><b>不可拆:</b>第 4 章那三篇。拆开讲任何一篇,叙事就塌了。</li>
+    <li><b>不可换顺序:</b>LingBot-VA → Fast-WAM。倒过来讲包袱先抖,前一篇就没意义了。</li>
+  </ul>
+</section>
+
+</main>
+</div>
+</div>
+
+<footer>
+  <div class="wrap">具身智能入门阅读路径 · 2026-08 · 共 21 条目,核心必读 11 篇</div>
+</footer>
+
+</body>
+</html>
